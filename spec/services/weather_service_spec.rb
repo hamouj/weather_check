@@ -56,27 +56,25 @@ describe WeatherService do
       end
     end
 
-    context '#get_hourly_weather()' do
-      it 'returns the hourly weather for a location' do
-        VCR.use_cassette('hourly_weather_lv', serialize_with: :json) do
-          hourly_lv_weather = WeatherService.get_hourly_weather('36.17193,-115.14001')[:forecast][:forecastday][0]
+    it 'returns the hourly weather for a location' do
+      VCR.use_cassette('weather_forecast_lv', serialize_with: :json) do
+        hourly_lv_weather = WeatherService.get_forecast('36.17193,-115.14001')[:forecast][:forecastday][0]
 
-          expect(hourly_lv_weather).to be_a Hash
-          expect(hourly_lv_weather).to have_key :hour
-          expect(hourly_lv_weather[:hour]).to be_an Array
+        expect(hourly_lv_weather).to be_a Hash
+        expect(hourly_lv_weather).to have_key :hour
+        expect(hourly_lv_weather[:hour]).to be_an Array
 
-          first_hour_weather = hourly_lv_weather[:hour][0]
+        first_hour_weather = hourly_lv_weather[:hour][0]
 
-          expect(first_hour_weather).to have_key :time
-          expect(first_hour_weather[:time]).to be_a String
-          expect(first_hour_weather).to have_key :temp_f
-          expect(first_hour_weather[:temp_f]).to be_a Float
-          expect(first_hour_weather).to have_key :condition
-          expect(first_hour_weather[:condition]).to have_key :text
-          expect(first_hour_weather[:condition][:text]).to be_a String
-          expect(first_hour_weather[:condition]).to have_key :icon
-          expect(first_hour_weather[:condition][:icon]).to be_a String
-        end
+        expect(first_hour_weather).to have_key :time
+        expect(first_hour_weather[:time]).to be_a String
+        expect(first_hour_weather).to have_key :temp_f
+        expect(first_hour_weather[:temp_f]).to be_a Float
+        expect(first_hour_weather).to have_key :condition
+        expect(first_hour_weather[:condition]).to have_key :text
+        expect(first_hour_weather[:condition][:text]).to be_a String
+        expect(first_hour_weather[:condition]).to have_key :icon
+        expect(first_hour_weather[:condition][:icon]).to be_a String
       end
     end
   end
