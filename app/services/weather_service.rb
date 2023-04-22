@@ -1,10 +1,6 @@
 class WeatherService
   def self.get_forecast(lat_lng)
-    get_url("v1/forecast.json?q=#{lat_lng}&days=5")
-  end
-
-  def self.get_hourly_weather(lat_lng)
-    get_url("v1/forecast.json?q=#{lat_lng}&hour=0-24")
+    get_url("v1/forecast.json?q=#{lat_lng}&days=5&hour=0-24")
   end
 
   def self.get_url(url)
