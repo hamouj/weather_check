@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/poros/hourly_weather.rb
 class HourlyWeather
   attr_reader :time,
               :temperature,

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/facades/mapquest_facade.rb
 class MapquestFacade
   attr_reader :location
 

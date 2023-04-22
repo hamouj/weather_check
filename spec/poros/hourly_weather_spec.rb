@@ -5,13 +5,13 @@ describe HourlyWeather do
     context '#initialize' do
       it 'exists and has attributes' do
         hour0 = HourlyWeather.new({
-          "time": "2023-04-22 00:00",
-          "temp_f": 68.9,
-          "condition": {
-              "text": "Clear",
-              "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
-          }
-        })
+                                    "time": "2023-04-22 00:00",
+                                    "temp_f": 68.9,
+                                    "condition": {
+                                      "text": "Clear",
+                                      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png"
+                                    }
+                                  })
 
         expect(hour0).to be_a HourlyWeather
         expect(hour0.time).to eq("00:00")

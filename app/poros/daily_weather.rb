@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/poros/daily_weather.rb
 class DailyWeather
   attr_reader :date,
               :sunrise,

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# app/poros/location.rb
 class Location
   attr_reader :lat_lng
 

@@ -1,3 +1,6 @@
+# frozen_string_literal :true
+
+# app/poros/current_weather.rb
 class CurrentWeather
   attr_reader :last_updated,
               :temperature,

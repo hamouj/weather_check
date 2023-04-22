@@ -1,7 +1,10 @@
-require './app/poros/current_weather.rb'
-require './app/poros/daily_weather.rb'
-require './app/poros/hourly_weather.rb'
+# frozen_string_literal: true
 
+require './app/poros/current_weather'
+require './app/poros/daily_weather'
+require './app/poros/hourly_weather'
+
+# app/poros/forecast.rb
 class Forecast
   attr_reader :id,
               :current_weather,

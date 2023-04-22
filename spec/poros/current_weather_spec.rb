@@ -5,18 +5,18 @@ describe CurrentWeather do
     context '#initialize' do
       it 'exists and has attributes' do
         lv_current_weather = CurrentWeather.new({
-          "last_updated": "2023-04-22 09:45",
-          "temp_f": 73.9,
-          "condition": {
-              "text": "Sunny",
-              "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-              "code": 1000
-          },
-          "humidity": 20,
-          "feelslike_f": 73.8,
-          "vis_miles": 9.0,
-          "uv": 6.0,
-      })
+                                                  "last_updated": "2023-04-22 09:45",
+                                                  "temp_f": 73.9,
+                                                  "condition": {
+                                                    "text": "Sunny",
+                                                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                                                    "code": 1000
+                                                  },
+                                                  "humidity": 20,
+                                                  "feelslike_f": 73.8,
+                                                  "vis_miles": 9.0,
+                                                  "uv": 6.0
+                                                })
 
         expect(lv_current_weather).to be_a CurrentWeather
         expect(lv_current_weather.last_updated).to eq("2023-04-22 09:45")
