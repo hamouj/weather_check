@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe MapquestService do
   context 'class methods' do
-    context '#get_lat_long()' do
+    context '#get_lat_lng()' do
       it 'returns the latitude and longitude of a location' do
-        VCR.use_cassette('lat_long_lv', serialize_with: :json) do
-          las_vegas = MapquestService.get_lat_long('las vegas,nv')
+        VCR.use_cassette('lat_lng_lv', serialize_with: :json) do
+          las_vegas = MapquestService.get_lat_lng('las vegas,nv')
 
           expect(las_vegas).to be_a Hash
           expect(las_vegas).to have_key :results

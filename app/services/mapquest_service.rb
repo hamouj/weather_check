@@ -1,5 +1,5 @@
 class MapquestService
-  def self.get_lat_long(location)
+  def self.get_lat_lng(location)
     get_url("address?location=#{location}")
   end
   
