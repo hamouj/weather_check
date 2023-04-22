@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
-# app/facades/mapquest_facade.rb
-class MapquestFacade
-  attr_reader :location
-
+# app/facades/weather_facade.rb
+class ForecastFacade
   def initialize(location)
     @location = location
   end
 
   def find_lat_lng
     data = MapquestService.get_lat_lng(@location)[:results][0][:locations][0][:latLng]
-    Location.new(data)
+    @_lat_lng ||= Location.new(data)
+  end
+
+  def fetch_forecast
+    data = WeatherService.get_forecast(@lat_lng)
+    Forecast.new(data)
   end
 end
