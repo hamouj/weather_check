@@ -14,9 +14,10 @@ class Api::V0::SessionsController < ApplicationController
   end
 
   private
-    def params_check
-      if params[:password].nil? || params[:email].nil?
-        render json: ErrorSerializer.unauthorized("Email and password are required"), status: 401
-      end
-    end
+
+  def params_check
+    return unless params[:password].nil? || params[:email].nil?
+
+    render json: ErrorSerializer.unauthorized("Email and password are required"), status: 401
+  end
 end

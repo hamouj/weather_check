@@ -23,7 +23,7 @@ describe 'Sessions API' do
       headers = {"CONTENT_TYPE" => "application/json"}
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
-      
+
       expect(response.status).to eq(200)
 
       response_body = JSON.parse(response.body, symbolize_names: true)
@@ -90,7 +90,7 @@ describe 'Sessions API' do
 
       expect(response_body[:errors][0][:detail].first).to eq("Invalid email/password")
     end
-    
+
     it 'returns a status 401 and error message when the email and password do not match the database' do
       user_params = {
         email: 'hailey@gmail.com',
