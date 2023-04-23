@@ -7,7 +7,7 @@ class Api::V0::ForecastController < ApplicationController
       forecast = ForecastFacade.new(params[:location]).fetch_forecast
       render json: ForecastSerializer.new(forecast)
     else
-      render json: ErrorSerializer.new('A location must be provided').invalid_request, status: 404
+      render json: ErrorSerializer.invalid_request('A location must be provided'), status: 404
     end
   end
 end
