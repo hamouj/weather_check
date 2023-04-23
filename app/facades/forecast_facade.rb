@@ -8,15 +8,11 @@ class ForecastFacade
 
   def find_lat_lng
     data = MapquestService.get_lat_lng(@location)[:results][0][:locations][0][:latLng]
-    @find_lat_lng ||= Location.new(data)
+    Location.new(data)
   end
 
   def fetch_forecast
-    data = WeatherService.get_forecast(@find_lat_lng)
-    if data.key?(:error)
-      "Location not found"
-    else
-      Forecast.new(data)
-    end
+    data = WeatherService.get_forecast(find_lat_lng.lat_lng)
+    Forecast.new(data)
   end
 end

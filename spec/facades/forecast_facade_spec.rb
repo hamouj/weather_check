@@ -23,7 +23,9 @@ describe ForecastFacade do
     context '#fetch_forecast' do
       it 'creates a Forecast object' do
         VCR.use_cassette('weather_forecast_lv', serialize_with: :json, match_requests_on: [:method, :path]) do
-          expect(@facade.fetch_forecast).to be_a(Forecast)
+          VCR.use_cassette('lat_lng_lv', serialize_with: :json, match_requests_on: [:method, :path]) do
+            expect(@facade.fetch_forecast).to be_a(Forecast)
+          end
         end
       end
     end
