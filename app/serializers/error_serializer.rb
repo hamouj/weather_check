@@ -22,7 +22,7 @@ class ErrorSerializer
           "title": 'Invalid Request',
           "detail": error.message.split(',').map do |message|
             message.strip
-          end 
+          end
         }
       ]
     }
