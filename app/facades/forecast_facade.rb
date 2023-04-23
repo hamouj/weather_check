@@ -13,6 +13,10 @@ class ForecastFacade
 
   def fetch_forecast
     data = WeatherService.get_forecast(@find_lat_lng)
-    Forecast.new(data)
+    if data.key?(:error)
+      "Location not found"
+    else
+      Forecast.new(data)
+    end
   end
 end

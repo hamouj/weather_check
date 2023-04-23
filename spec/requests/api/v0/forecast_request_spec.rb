@@ -48,6 +48,8 @@ describe 'Forecast API' do
     it 'sends a forecast object with a daily weather key with daily weather attributes' do
       daily_weather = JSON.parse(response.body, symbolize_names: true)[:data][:attributes][:daily_weather]
 
+      expect(daily_weather.count).to eq(5)
+
       daily_weather.each do |day|
         expect(day).to have_key :date
         expect(day[:date]).to be_a String
@@ -69,6 +71,8 @@ describe 'Forecast API' do
     it 'sends a forecast object with a hourly weather key with hourly weather attributes' do
       hourly_weather = JSON.parse(response.body, symbolize_names: true)[:data][:attributes][:hourly_weather]
 
+      expect(hourly_weather.count).to eq(24)
+
       hourly_weather.each do |hour|
         expect(hour).to have_key :time
         expect(hour[:time]).to be_a String
@@ -78,6 +82,60 @@ describe 'Forecast API' do
         expect(hour[:conditions]).to be_a String
         expect(hour).to have_key :icon
         expect(hour[:icon]).to be_a String
+      end
+    end
+
+    it 'only sends required information based on the json contract' do
+      response_body = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(response_body[:attributes]).to_not have_key :location
+      expect(response_body[:attributes][:current_weather]).to_not have_key :wind_mph
+      expect(response_body[:attributes][:daily_weather][0]).to_not have_key :avghumidity
+      expect(response_body[:attributes][:hourly_weather][0]).to_not have_key :feels_like
+    end
+  end
+
+  describe 'sad path testing' do
+    it 'returns an error object when location query parameters are not included' do
+      get "/api/v0/forecast"
+
+      expect(response.status).to eq(404)
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_body).to be_a Hash
+      expect(response_body).to have_key(:errors)
+      expect(response_body[:errors]).to be_an Array
+      expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
+      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+      expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
+    end
+
+    it 'returns an error object when location query parameters are left blank' do
+      get "/api/v0/forecast?location="
+
+      expect(response.status).to eq(404)
+
+      response_body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response_body).to have_key(:errors)
+      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+      expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
+    end
+  end
+
+  describe 'edge case testing' do
+    it 'returns an error object when the location entered does not exist' do
+      VCR.use_cassette('incorrect_location', serialize_with: :json) do
+        get "/api/v0/forecast?location=akjsdf,mnp"
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+        expect(response_body).to have_key(:errors)
+        expect(response_body[:errors][0][:status]).to eq('404')
+        expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+        expect(response_body[:errors][0][:detail].first).to eq('Location not found')
       end
     end
   end
