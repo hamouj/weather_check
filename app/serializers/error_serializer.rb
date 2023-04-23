@@ -27,4 +27,16 @@ class ErrorSerializer
       ]
     }
   end
+
+  def self.unauthorized(error)
+    {
+      errors: [
+        {
+          "status": '401',
+          "title": 'Bad Credentials',
+          "detail": [error]
+        }
+      ]
+    }
+  end
 end
