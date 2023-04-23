@@ -4,7 +4,7 @@ describe 'Forecast API' do
   describe 'happy path testing' do
     before(:each) do
       VCR.use_cassette('weather_forecast_lv', serialize_with: :json, match_requests_on: [:method, :path]) do
-        VCR.use_cassette('lat_lng_lv', serialize_with: :json, match_requests_on: [:method, :path]) do  
+        VCR.use_cassette('lat_lng_lv', serialize_with: :json, match_requests_on: [:method, :path]) do
           get "/api/v0/forecast?location=lasvegas,nv"
         end
       end

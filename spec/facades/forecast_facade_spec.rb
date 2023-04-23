@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ForecastFacade do
   describe 'instance methods' do
-    before (:each) do
+    before(:each) do
       @facade = ForecastFacade.new('lasvegas,nv')
     end
 
