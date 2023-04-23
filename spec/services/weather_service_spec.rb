@@ -17,11 +17,11 @@ describe WeatherService do
           expect(lv_weather[:current]).to have_key :feelslike_f
           expect(lv_weather[:current][:feelslike_f]).to be_a Float
           expect(lv_weather[:current]).to have_key :humidity
-          expect(lv_weather[:current][:humidity]).to be_an(Integer).or(be_a Float)
+          expect(lv_weather[:current][:humidity]).to be_an(Integer).or be_a(Float)
           expect(lv_weather[:current]).to have_key :uv
-          expect(lv_weather[:current][:uv]).to be_an(Integer).or(be_a Float)
+          expect(lv_weather[:current][:uv]).to be_an(Integer).or be_a(Float)
           expect(lv_weather[:current]).to have_key :vis_miles
-          expect(lv_weather[:current][:vis_miles]).to be_an(Integer).or(be_a Float)
+          expect(lv_weather[:current][:vis_miles]).to be_an(Integer).or be_a(Float)
           expect(lv_weather[:current][:condition]).to have_key :text
           expect(lv_weather[:current][:condition][:text]).to be_a String
           expect(lv_weather[:current][:condition]).to have_key :icon
