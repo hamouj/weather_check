@@ -1,0 +1,90 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "http://api.weatherapi.com/v1/forecast.json?days=5&hour=0-24&key=c799eea6f4934b11b4f150934232204&q=",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 400,
+          "message": "Bad Request"
+        },
+        "headers": {
+          "Date": [
+            "Sun, 23 Apr 2023 03:56:25 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Server": [
+            "BunnyCDN-LA1-987"
+          ],
+          "Cdn-Pullzone": [
+            "93447"
+          ],
+          "Cdn-Uid": [
+            "8fa3a04a-75d9-4707-8056-b7b33c8ac7fe"
+          ],
+          "Cdn-Requestcountrycode": [
+            "US"
+          ],
+          "Cache-Control": [
+            "public, max-age=5"
+          ],
+          "Cdn-Proxyver": [
+            "1.03"
+          ],
+          "Cdn-Requestpullsuccess": [
+            "True"
+          ],
+          "Cdn-Requestpullcode": [
+            "400"
+          ],
+          "Cdn-Cachedat": [
+            "04/23/2023 03:56:25"
+          ],
+          "Cdn-Edgestorageid": [
+            "907"
+          ],
+          "Cdn-Status": [
+            "400"
+          ],
+          "Cdn-Requestid": [
+            "0a341b646c8a52076581aacd637d35a8"
+          ],
+          "Cdn-Cache": [
+            "EXPIRED"
+          ]
+        },
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"error\":{\"code\":1003,\"message\":\"Parameter q is missing.\"}}"
+        }
+      },
+      "recorded_at": "Sun, 23 Apr 2023 03:56:25 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}
