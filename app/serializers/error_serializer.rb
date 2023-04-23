@@ -2,17 +2,27 @@
 
 # app/serializers/error_serializer.rb
 class ErrorSerializer
-  def initialize(errors)
-    @errors = errors
-  end
-
-  def invalid_request
+  def self.invalid_request(error)
     {
       errors: [
         {
           "status": '404',
           "title": 'Invalid Request',
-          "detail": [@errors]
+          "detail": [error]
+        }
+      ]
+    }
+  end
+
+  def self.validation_serialized_json(error)
+    {
+      errors: [
+        {
+          "status": '401',
+          "title": 'Invalid Request',
+          "detail": error.message.split(',').map do |message|
+            message.strip
+          end 
         }
       ]
     }
