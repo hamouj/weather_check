@@ -90,8 +90,17 @@ describe 'Forecast API' do
 
       expect(response_body[:attributes]).to_not have_key :location
       expect(response_body[:attributes][:current_weather]).to_not have_key :wind_mph
+      expect(response_body[:attributes][:current_weather]).to_not have_key :id
+      expect(response_body[:attributes][:current_weather]).to_not have_key :type
+      expect(response_body[:attributes][:current_weather]).to_not have_key :attributes
       expect(response_body[:attributes][:daily_weather][0]).to_not have_key :avghumidity
+      expect(response_body[:attributes][:daily_weather][0]).to_not have_key :id
+      expect(response_body[:attributes][:daily_weather][0]).to_not have_key :type
+      expect(response_body[:attributes][:daily_weather][0]).to_not have_key :attributes
       expect(response_body[:attributes][:hourly_weather][0]).to_not have_key :feels_like
+      expect(response_body[:attributes][:hourly_weather][0]).to_not have_key :id
+      expect(response_body[:attributes][:hourly_weather][0]).to_not have_key :type
+      expect(response_body[:attributes][:hourly_weather][0]).to_not have_key :attributes
     end
   end
 
