@@ -13,11 +13,11 @@ class Api::V0::ForecastController < ApplicationController
 
   private
 
-    def location_check(forecast)
-      if forecast == "Location not found"
-        render json: ErrorSerializer.new(forecast).invalid_request, status: 404
-      else
-        render json: ForecastSerializer.new(forecast).serializable_hash.to_json
-      end
+  def location_check(forecast)
+    if forecast == "Location not found"
+      render json: ErrorSerializer.new(forecast).invalid_request, status: 404
+    else
+      render json: ForecastSerializer.new(forecast).serializable_hash.to_json
     end
+  end
 end

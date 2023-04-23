@@ -100,7 +100,7 @@ describe 'Forecast API' do
       get "/api/v0/forecast"
 
       expect(response.status).to eq(404)
-      
+
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body).to be_a Hash
@@ -116,7 +116,7 @@ describe 'Forecast API' do
       get "/api/v0/forecast?location="
 
       expect(response.status).to eq(404)
-      
+
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body).to have_key(:errors)
@@ -128,7 +128,7 @@ describe 'Forecast API' do
 
   describe 'edge case testing' do
     it 'returns an error object when the location entered does not exist' do
-      VCR.use_cassette('incorrect_location', serialize_with: :json)do 
+      VCR.use_cassette('incorrect_location', serialize_with: :json) do
         get "/api/v0/forecast?location=akjsdf,mnp"
 
         response_body = JSON.parse(response.body, symbolize_names: true)
