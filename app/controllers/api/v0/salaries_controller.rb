@@ -4,10 +4,9 @@
 class Api::V0::SalariesController < ApplicationController
   def index
     if params[:destination].present?
-      # salaries = ForecastFacade.new(params[:destination]).fetch_forecast
       render json: SalariesSerializer.new(params[:destination]).serialize_salaries
     else
-      render json: ErrorSerializer.invalid_request('A location must be provided'), status: 404
+      render json: ErrorSerializer.invalid_request('A valid location must be provided'), status: 404
     end
   end
 end
