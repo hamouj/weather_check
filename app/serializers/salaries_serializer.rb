@@ -17,7 +17,7 @@ class SalariesSerializer
           "destination": @destination,
           "forecast": {
             "summary": @forecast.current_weather.condition,
-            "temperature": @forecast.current_weather.temperature
+            "temperature": @forecast.current_weather.temperature.round()
           },
           "salaries":
             @salaries.each do |salary|

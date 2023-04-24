@@ -26,7 +26,7 @@ describe 'Salaries API' do
       expect(response_body[:data][:attributes][:destination]).to eq('las-vegas')
       expect(response_body[:data][:attributes][:forecast].keys).to eq([:summary, :temperature])
       expect(response_body[:data][:attributes][:forecast][:summary]).to be_a String
-      expect(response_body[:data][:attributes][:forecast][:temperature]).to be_a Float
+      expect(response_body[:data][:attributes][:forecast][:temperature]).to be_an Integer
       expect(response_body[:data][:attributes][:salaries]).to be_an Array
       
       response_body[:data][:attributes][:salaries].each do |salary|
