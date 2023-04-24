@@ -1,0 +1,78 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.teleport.org/api/urban_areas/slug:las-vegas/salaries/",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Date": [
+            "Mon, 24 Apr 2023 15:21:09 GMT"
+          ],
+          "Access-Control-Max-Age": [
+            "600"
+          ],
+          "Cache-Control": [
+            "public, max-age=300"
+          ],
+          "Server": [
+            "nginx"
+          ],
+          "X-Apiproxy-Cache-Status": [
+            "MISS"
+          ],
+          "Vary": [
+            "Origin,Accept-Encoding"
+          ],
+          "X-Cache": [
+            "Miss from cloudfront"
+          ],
+          "Via": [
+            "1.1 c71404548d9c539c9a72a89dc3009676.cloudfront.net (CloudFront)"
+          ],
+          "X-Amz-Cf-Pop": [
+            "LAX53-P4"
+          ],
+          "X-Amz-Cf-Id": [
+            "Uz665_hn0JmvB3epmHJHmq7powNndAoQ3j7aCC7FHm5TBQTW72gM0A=="
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"_links\":{\"curies\":[{\"href\":\"https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/\",\"name\":\"location\",\"templated\":true},{\"href\":\"https://developers.teleport.org/api/resources/City/#!/relations/{rel}/\",\"name\":\"city\",\"templated\":true},{\"href\":\"https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/\",\"name\":\"ua\",\"templated\":true},{\"href\":\"https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/\",\"name\":\"country\",\"templated\":true},{\"href\":\"https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/\",\"name\":\"a1\",\"templated\":true},{\"href\":\"https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/\",\"name\":\"tz\",\"templated\":true}],\"self\":{\"href\":\"https://api.teleport.org/api/urban_areas/slug:las-vegas/salaries/\"}},\"salaries\":[{\"job\":{\"id\":\"ACCOUNT-MANAGER\",\"title\":\"Account Manager\"},\"salary_percentiles\":{\"percentile_25\":43474.477094547474,\"percentile_50\":54430.58365157793,\"percentile_75\":68147.76472660554}},{\"job\":{\"id\":\"ACCOUNTANT\",\"title\":\"Accountant\"},\"salary_percentiles\":{\"percentile_25\":46785.6841886668,\"percentile_50\":55563.23217635986,\"percentile_75\":65987.552034815}},{\"job\":{\"id\":\"ADMINISTRATIVE-ASSISTANT\",\"title\":\"Administrative Assistant\"},\"salary_percentiles\":{\"percentile_25\":27023.312887194927,\"percentile_50\":32544.13271130365,\"percentile_75\":39192.84724090256}},{\"job\":{\"id\":\"ARCHITECT\",\"title\":\"Architect\"},\"salary_percentiles\":{\"percentile_25\":49892.81020569086,\"percentile_50\":61780.79933806944,\"percentile_75\":76501.3466091642}},{\"job\":{\"id\":\"ATTORNEY\",\"title\":\"Attorney\"},\"salary_percentiles\":{\"percentile_25\":55120.417355192876,\"percentile_50\":74436.15064682785,\"percentile_75\":100520.65621007602}},{\"job\":{\"id\":\"BUSINESS-ANALYST\",\"title\":\"Business Analyst\"},\"salary_percentiles\":{\"percentile_25\":49221.839773522835,\"percentile_50\":59045.76351744844,\"percentile_75\":70830.39165947294}},{\"job\":{\"id\":\"BUSINESS-DEVELOPMENT\",\"title\":\"Business Development\"},\"salary_percentiles\":{\"percentile_25\":50692.49259857158,\"percentile_50\":67160.21604489663,\"percentile_75\":88977.5662624309}},{\"job\":{\"id\":\"C-LEVEL-EXECUTIVE\",\"title\":\"C Level Executive\"},\"salary_percentiles\":{\"percentile_25\":92052.22012789393,\"percentile_50\":138009.79313895566,\"percentile_75\":206911.93515805}},{\"job\":{\"id\":\"CASHIER\",\"title\":\"Cashier\"},\"salary_percentiles\":{\"percentile_25\":14541.745480936317,\"percentile_50\":20372.255879899065,\"percentile_75\":28540.508440349833}},{\"job\":{\"id\":\"CHEF\",\"title\":\"Chef\"},\"salary_percentiles\":{\"percentile_25\":30476.893946898683,\"percentile_50\":37433.941795542494,\"percentile_75\":45979.09487737214}},{\"job\":{\"id\":\"CHEMICAL-ENGINEER\",\"title\":\"Chemical Engineer\"},\"salary_percentiles\":{\"percentile_25\":44155.71038904832,\"percentile_50\":53505.15251319162,\"percentile_75\":64834.226881104354}},{\"job\":{\"id\":\"CIVIL-ENGINEER\",\"title\":\"Civil Engineer\"},\"salary_percentiles\":{\"percentile_25\":47529.63496060042,\"percentile_50\":56662.902637539155,\"percentile_75\":67551.21384737609}},{\"job\":{\"id\":\"CONTENT-MARKETING\",\"title\":\"Content Marketing\"},\"salary_percentiles\":{\"percentile_25\":38276.585460882074,\"percentile_50\":47924.25806524025,\"percentile_75\":60003.64148079413}},{\"job\":{\"id\":\"COPYWRITER\",\"title\":\"Copywriter\"},\"salary_percentiles\":{\"percentile_25\":35624.37289944421,\"percentile_50\":43805.30296197176,\"percentile_75\":53864.93603709356}},{\"job\":{\"id\":\"CUSTOMER-SUPPORT\",\"title\":\"Customer Support\"},\"salary_percentiles\":{\"percentile_25\":23658.987433705337,\"percentile_50\":30417.7199114641,\"percentile_75\":39107.239361146836}},{\"job\":{\"id\":\"DATA-ANALYST\",\"title\":\"Data Analyst\"},\"salary_percentiles\":{\"percentile_25\":33945.35378253495,\"percentile_50\":40853.61816680858,\"percentile_75\":49167.79268266486}},{\"job\":{\"id\":\"DATA-SCIENTIST\",\"title\":\"Data Scientist\"},\"salary_percentiles\":{\"percentile_25\":74686.71667078791,\"percentile_50\":90222.6195047455,\"percentile_75\":108990.21182279277}},{\"job\":{\"id\":\"DENTIST\",\"title\":\"Dentist\"},\"salary_percentiles\":{\"percentile_25\":94637.24421894577,\"percentile_50\":123249.97792336522,\"percentile_75\":160513.5185780163}},{\"job\":{\"id\":\"ELECTRICAL-ENGINEER\",\"title\":\"Electrical Engineer\"},\"salary_percentiles\":{\"percentile_25\":43524.16772863082,\"percentile_50\":51890.31917243493,\"percentile_75\":61864.59992998175}},{\"job\":{\"id\":\"EXECUTIVE-ASSISTANT\",\"title\":\"Executive Assistant\"},\"salary_percentiles\":{\"percentile_25\":42359.41154768593,\"percentile_50\":51233.83218119895,\"percentile_75\":61967.46989783559}},{\"job\":{\"id\":\"FASHION-DESIGNER\",\"title\":\"Fashion Designer\"},\"salary_percentiles\":{\"percentile_25\":32766.588108850254,\"percentile_50\":42298.97338678205,\"percentile_75\":54604.49966996815}},{\"job\":{\"id\":\"FINANCE-MANAGER\",\"title\":\"Finance Manager\"},\"salary_percentiles\":{\"percentile_25\":60896.620274718785,\"percentile_50\":76925.07441336267,\"percentile_75\":97172.33972601955}},{\"job\":{\"id\":\"FINANCIAL-ANALYST\",\"title\":\"Financial Analyst\"},\"salary_percentiles\":{\"percentile_25\":54629.463260350385,\"percentile_50\":63577.297538978135,\"percentile_75\":73990.70979511998}},{\"job\":{\"id\":\"GRAPHIC-DESIGNER\",\"title\":\"Graphic Designer\"},\"salary_percentiles\":{\"percentile_25\":39494.3578726852,\"percentile_50\":47027.81687441531,\"percentile_75\":55998.26605873551}},{\"job\":{\"id\":\"HARDWARE-ENGINEER\",\"title\":\"Hardware Engineer\"},\"salary_percentiles\":{\"percentile_25\":50758.99366908177,\"percentile_50\":61669.75114398065,\"percentile_75\":74925.79996669783}},{\"job\":{\"id\":\"HUMAN-RESOURCES-MANAGER\",\"title\":\"Human Resources Manager\"},\"salary_percentiles\":{\"percentile_25\":48099.322456136426,\"percentile_50\":58736.31629379876,\"percentile_75\":71725.64343107562}},{\"job\":{\"id\":\"IT-MANAGER\",\"title\":\"IT Manager\"},\"salary_percentiles\":{\"percentile_25\":57324.43921042298,\"percentile_50\":70244.03114023291,\"percentile_75\":86075.39783717325}},{\"job\":{\"id\":\"INDUSTRIAL-DESIGNER\",\"title\":\"Industrial Designer\"},\"salary_percentiles\":{\"percentile_25\":43787.001592893386,\"percentile_50\":53789.50535782464,\"percentile_75\":66076.93565181289}},{\"job\":{\"id\":\"INTERIOR-DESIGNER\",\"title\":\"Interior Designer\"},\"salary_percentiles\":{\"percentile_25\":36392.427285225094,\"percentile_50\":43911.96630291843,\"percentile_75\":52985.220509638704}},{\"job\":{\"id\":\"LECTURER\",\"title\":\"Lecturer\"},\"salary_percentiles\":{\"percentile_25\":49093.499406392635,\"percentile_50\":60495.26861558082,\"percentile_75\":74545.05319689513}},{\"job\":{\"id\":\"MARKETING-MANAGER\",\"title\":\"Marketing Manager\"},\"salary_percentiles\":{\"percentile_25\":42743.62926614116,\"percentile_50\":53687.07162059132,\"percentile_75\":67432.309999883}},{\"job\":{\"id\":\"MECHANICAL-ENGINEER\",\"title\":\"Mechanical Engineer\"},\"salary_percentiles\":{\"percentile_25\":51324.90529324306,\"percentile_50\":60176.577911580905,\"percentile_75\":70554.8409385044}},{\"job\":{\"id\":\"MOBILE-DEVELOPER\",\"title\":\"Mobile Developer\"},\"salary_percentiles\":{\"percentile_25\":50080.77154174538,\"percentile_50\":62635.161634800774,\"percentile_75\":78336.72190428262}},{\"job\":{\"id\":\"NURSE\",\"title\":\"Nurse\"},\"salary_percentiles\":{\"percentile_25\":48344.1809222767,\"percentile_50\":53781.537278084244,\"percentile_75\":59830.442812635185}},{\"job\":{\"id\":\"OFFICE-MANAGER\",\"title\":\"Office Manager\"},\"salary_percentiles\":{\"percentile_25\":39304.92420450415,\"percentile_50\":48053.025011263024,\"percentile_75\":58748.191466260585}},{\"job\":{\"id\":\"OPERATIONS-MANAGER\",\"title\":\"Operations Manager\"},\"salary_percentiles\":{\"percentile_25\":62291.3660591583,\"percentile_50\":79388.94219470734,\"percentile_75\":101179.41765491194}},{\"job\":{\"id\":\"PHARMACIST\",\"title\":\"Pharmacist\"},\"salary_percentiles\":{\"percentile_25\":90328.94639614281,\"percentile_50\":100628.26233877482,\"percentile_75\":112101.9073654742}},{\"job\":{\"id\":\"PHYSICIAN\",\"title\":\"Physician\"},\"salary_percentiles\":{\"percentile_25\":73122.91196446381,\"percentile_50\":99627.13678129218,\"percentile_75\":135738.117049577}},{\"job\":{\"id\":\"POSTDOCTORAL-RESEARCHER\",\"title\":\"Postdoctoral Researcher\"},\"salary_percentiles\":{\"percentile_25\":43925.336900488524,\"percentile_50\":49678.21712312058,\"percentile_75\":56184.54929834501}},{\"job\":{\"id\":\"PRODUCT-MANAGER\",\"title\":\"Product Manager\"},\"salary_percentiles\":{\"percentile_25\":50261.46888215749,\"percentile_50\":61765.32574267665,\"percentile_75\":75902.18807658524}},{\"job\":{\"id\":\"PROJECT-MANAGER\",\"title\":\"Project Manager\"},\"salary_percentiles\":{\"percentile_25\":56539.73219088589,\"percentile_50\":69887.43641103855,\"percentile_75\":86386.22043021086}},{\"job\":{\"id\":\"QA-ENGINEER\",\"title\":\"QA Engineer\"},\"salary_percentiles\":{\"percentile_25\":61828.6436765931,\"percentile_50\":76217.63601886861,\"percentile_75\":93955.288275294}},{\"job\":{\"id\":\"RECEPTIONIST\",\"title\":\"Receptionist\"},\"salary_percentiles\":{\"percentile_25\":20123.181683783117,\"percentile_50\":24372.53228156463,\"percentile_75\":29519.205220644577}},{\"job\":{\"id\":\"RESEARCH-SCIENTIST\",\"title\":\"Research Scientist\"},\"salary_percentiles\":{\"percentile_25\":45739.90142990139,\"percentile_50\":58621.139248048436,\"percentile_75\":75129.98190443397}},{\"job\":{\"id\":\"SALES-MANAGER\",\"title\":\"Sales Manager\"},\"salary_percentiles\":{\"percentile_25\":47880.69063381401,\"percentile_50\":63282.26083777142,\"percentile_75\":83637.98608016741}},{\"job\":{\"id\":\"SOFTWARE-ENGINEER\",\"title\":\"Software Engineer\"},\"salary_percentiles\":{\"percentile_25\":66393.51742820384,\"percentile_50\":80924.24271560513,\"percentile_75\":98635.12753599466}},{\"job\":{\"id\":\"SYSTEMS-ADMINISTRATOR\",\"title\":\"Systems Administrator\"},\"salary_percentiles\":{\"percentile_25\":58200.43688869912,\"percentile_50\":70045.08397514504,\"percentile_75\":84300.29139588449}},{\"job\":{\"id\":\"TEACHER\",\"title\":\"Teacher\"},\"salary_percentiles\":{\"percentile_25\":37382.850386298815,\"percentile_50\":46235.02587639944,\"percentile_75\":57183.376754352736}},{\"job\":{\"id\":\"UX-DESIGNER\",\"title\":\"UX Designer\"},\"salary_percentiles\":{\"percentile_25\":66364.07875664078,\"percentile_50\":81372.11325926159,\"percentile_75\":99774.16910372642}},{\"job\":{\"id\":\"WAITER\",\"title\":\"Waiter\"},\"salary_percentiles\":{\"percentile_25\":16105.440954177808,\"percentile_50\":24651.861223868535,\"percentile_75\":37733.475508674586}},{\"job\":{\"id\":\"WEB-DESIGNER\",\"title\":\"Web Designer\"},\"salary_percentiles\":{\"percentile_25\":42538.61185390248,\"percentile_50\":52051.108739886746,\"percentile_75\":63690.79297548733}},{\"job\":{\"id\":\"WEB-DEVELOPER\",\"title\":\"Web Developer\"},\"salary_percentiles\":{\"percentile_25\":49229.15977159391,\"percentile_50\":60999.93777570521,\"percentile_75\":75585.12934009054}}]}"
+        }
+      },
+      "recorded_at": "Mon, 24 Apr 2023 15:21:09 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}
