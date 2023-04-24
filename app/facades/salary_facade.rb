@@ -9,7 +9,7 @@ class SalaryFacade
   def fetch_salaries
     jobs = ["Data Analyst", "Data Scientist", "Mobile Developer", "QA Engineer", "Software Engineer", "Systems Administrator", "Web Developer"]
     data = TeleportService.get_salaries(@destination)
-
+  
     job_data = data[:salaries].select do |salary|
       jobs.include?(salary[:job][:title])
     end

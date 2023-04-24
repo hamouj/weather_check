@@ -39,4 +39,38 @@ describe 'Salaries API' do
       end
     end
   end
+
+  describe 'sad path testing' do
+    it 'returns an error when no destination parameter is provided' do
+      get '/api/v0/salaries'
+
+      expect(response.status).to eq(404)
+      
+      response_body = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(response_body).to be_a Hash
+      expect(response_body).to have_key(:errors)
+      expect(response_body[:errors]).to be_an Array
+      expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
+      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+      expect(response_body[:errors][0][:detail].first).to eq('A destination must be provided')
+    end
+
+    it 'returns an error when the destination parameter is left blank' do
+      get '/api/v0/salaries?destination='
+
+      expect(response.status).to eq(404)
+      
+      response_body = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(response_body).to be_a Hash
+      expect(response_body).to have_key(:errors)
+      expect(response_body[:errors]).to be_an Array
+      expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
+      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+      expect(response_body[:errors][0][:detail].first).to eq('A destination must be provided')
+    end
+  end
 end
