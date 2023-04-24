@@ -6,7 +6,7 @@ class Api::V0::SalariesController < ApplicationController
     if params[:destination].present?
       render json: SalariesSerializer.new(params[:destination]).serialize_salaries
     else
-      render json: ErrorSerializer.invalid_request('A valid location must be provided'), status: 404
+      render json: ErrorSerializer.invalid_request('A valid destination must be provided'), status: 404
     end
   end
 end
