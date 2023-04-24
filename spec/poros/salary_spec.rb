@@ -20,8 +20,8 @@ describe Salary do
 
       expect(data_analyst_salary).to be_a Salary
       expect(data_analyst_salary.title).to eq('Data Analyst')
-      expect(data_analyst_salary.min).to eq(33945.35378253495)
-      expect(data_analyst_salary.max).to eq(49167.79268266486)
+      expect(data_analyst_salary.min).to eq("$33,945.35")
+      expect(data_analyst_salary.max).to eq("$49,167.79")
       end 
     end
   end
