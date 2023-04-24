@@ -16,7 +16,7 @@ describe 'Salaries API' do
       expect(response).to be_successful
 
       response_body = JSON.parse(response.body, symbolize_names: true)
-  
+
       expect(response_body).to be_a Hash
       expect(response_body).to have_key :data
       expect(response_body[:data].keys).to eq([:id, :type, :attributes])
@@ -28,7 +28,7 @@ describe 'Salaries API' do
       expect(response_body[:data][:attributes][:forecast][:summary]).to be_a String
       expect(response_body[:data][:attributes][:forecast][:temperature]).to be_an Integer
       expect(response_body[:data][:attributes][:salaries]).to be_an Array
-      
+
       response_body[:data][:attributes][:salaries].each do |salary|
         expect(salary).to have_key :title
         expect(salary[:title]).to be_a String
@@ -45,9 +45,9 @@ describe 'Salaries API' do
       get '/api/v0/salaries'
 
       expect(response.status).to eq(404)
-      
+
       response_body = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(response_body).to be_a Hash
       expect(response_body).to have_key(:errors)
       expect(response_body[:errors]).to be_an Array
@@ -61,9 +61,9 @@ describe 'Salaries API' do
       get '/api/v0/salaries?destination='
 
       expect(response.status).to eq(404)
-      
+
       response_body = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(response_body).to be_a Hash
       expect(response_body).to have_key(:errors)
       expect(response_body[:errors]).to be_an Array

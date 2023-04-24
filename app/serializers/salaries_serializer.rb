@@ -17,14 +17,14 @@ class SalariesSerializer
           "destination": @destination,
           "forecast": {
             "summary": @forecast.current_weather.condition,
-            "temperature": @forecast.current_weather.temperature.round()
+            "temperature": @forecast.current_weather.temperature.round
           },
           "salaries":
             @salaries.each do |salary|
               {
-              "title": salary.title,
-              "min": salary.min,
-              "max": salary.max
+                "title": salary.title,
+                "min": salary.min,
+                "max": salary.max
               }
             end
         }
