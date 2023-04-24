@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# app/serializers/salary_serializer.rb
+# app/serializers/salaries_serializer.rb
 class SalariesSerializer
   def initialize(destination)
     @destination = destination
