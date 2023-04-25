@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe Roadtrip do
+describe RoadTrip do
   describe 'instance methods' do
     context '#initialize' do
       it 'exists and has attributes' do
-        roadtrip_data = {
+        road_trip_data = {
           "route": {
             "sessionId": "AK0A5wcAAG4AAAAIAAAAFQAAAPUAAAB42mP4ysDAyMTAwMCekVqUapWc-1UyUBrIZbjWNMGNa26avJ7csx2RE4E0F5BmwAJgGkU5jcEaFUy272CwOhlmuqnIKQZEbwbSDDhA6DcryXZmkHWsDjwMCYwNAgwMDozY1bKACAFkESiHRYEBpEVCAspvAEIBBgcFByYGBwcg3xGil5FBgIWpSYVBhEnRiQEA18YiRj1zEJE:car",
             "realTime": 38624,
@@ -14,9 +14,9 @@ describe Roadtrip do
           }
         }
 
-        lv_to_denver = Roadtrip.new('las vegas,nv', 'denver,co', roadtrip_data)
+        lv_to_denver = RoadTrip.new('las vegas,nv', 'denver,co', road_trip_data)
 
-        expect(lv_to_denver).to be_a Roadtrip
+        expect(lv_to_denver).to be_a RoadTrip
         expect(lv_to_denver.start_city).to eq('las vegas,nv')
         expect(lv_to_denver.end_city).to eq('denver,co')
         expect(lv_to_denver.travel_time).to eq('10h32m')
@@ -26,7 +26,7 @@ describe Roadtrip do
 
     context '#format_travel_time()' do
       it 'formats travel time into days, hours, minutes' do
-        roadtrip_data = {
+        road_trip_data = {
           "route": {
             "distance": 747.6798,
             "time": 289919,
@@ -34,7 +34,7 @@ describe Roadtrip do
           }
         }
 
-        ny_to_panama = Roadtrip.new('new york,ny', 'panama city,panama', roadtrip_data)
+        ny_to_panama = RoadTrip.new('new york,ny', 'panama city,panama', road_trip_data)
 
         expect(ny_to_panama.travel_time).to eq('3d8h31m')
       end

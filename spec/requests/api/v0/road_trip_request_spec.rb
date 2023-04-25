@@ -17,7 +17,7 @@ describe 'Roadtrip API' do
     it 'sends a roadtrip object with attributes when the trip is possible' do
       VCR.use_cassette('lv_to_denver', serialize_with: :json, match_requests_on: [:method, :path]) do
         VCR.use_cassette('lat_lng_denver', serialize_with: :json, match_requests_on: [:method, :path]) do
-          roadtrip_params = {
+          road_trip_params = {
             origin: 'las vegas,nv',
             destination: 'denver,co',
             api_key: @api_key
@@ -25,32 +25,32 @@ describe 'Roadtrip API' do
 
           headers = { "CONTENT_TYPE" => "application/json" }
 
-          post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+          post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
           expect(response).to be_successful
 
-          roadtrip = JSON.parse(response.body, symbolize_names: true)[:data]
+          road_trip = JSON.parse(response.body, symbolize_names: true)[:data]
 
-          expect(roadtrip.keys).to eq([:id, :type, :attributes])
-          expect(roadtrip[:id]).to be(nil)
-          expect(roadtrip[:type]).to eq("roadtrip")
-          expect(roadtrip[:attributes]).to be_a Hash
-          expect(roadtrip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
-          expect(roadtrip[:attributes][:start_city]).to be_a String
-          expect(roadtrip[:attributes][:end_city]).to be_a String
-          expect(roadtrip[:attributes][:travel_time]).to be_a String
-          expect(roadtrip[:attributes][:weather_at_eta]).to be_a Hash
-          expect(roadtrip[:attributes][:weather_at_eta].keys).to eq([:datetime, :temperature, :condition])
-          expect(roadtrip[:attributes][:weather_at_eta][:datetime]).to be_a String
-          expect(roadtrip[:attributes][:weather_at_eta][:temperature]).to be_a Float
-          expect(roadtrip[:attributes][:weather_at_eta][:condition]).to be_a String
+          expect(road_trip.keys).to eq([:id, :type, :attributes])
+          expect(road_trip[:id]).to be(nil)
+          expect(road_trip[:type]).to eq("road_trip")
+          expect(road_trip[:attributes]).to be_a Hash
+          expect(road_trip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
+          expect(road_trip[:attributes][:start_city]).to be_a String
+          expect(road_trip[:attributes][:end_city]).to be_a String
+          expect(road_trip[:attributes][:travel_time]).to be_a String
+          expect(road_trip[:attributes][:weather_at_eta]).to be_a Hash
+          expect(road_trip[:attributes][:weather_at_eta].keys).to eq([:datetime, :temperature, :condition])
+          expect(road_trip[:attributes][:weather_at_eta][:datetime]).to be_a String
+          expect(road_trip[:attributes][:weather_at_eta][:temperature]).to be_a Float
+          expect(road_trip[:attributes][:weather_at_eta][:condition]).to be_a String
         end
       end
     end
 
     it 'sends a roadtrip object with different attributes when the trip is impossible' do
       VCR.use_cassette('ny_to_uk', serialize_with: :json, match_requests_on: [:method, :path]) do
-        roadtrip_params = {
+        road_trip_params = {
           origin: 'new york,ny',
           destination: 'london,uk',
           api_key: @api_key
@@ -58,21 +58,21 @@ describe 'Roadtrip API' do
 
         headers = { "CONTENT_TYPE" => "application/json" }
 
-        post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+        post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
         expect(response).to be_successful
 
-        roadtrip = JSON.parse(response.body, symbolize_names: true)[:data]
+        road_trip = JSON.parse(response.body, symbolize_names: true)[:data]
 
-        expect(roadtrip.keys).to eq([:id, :type, :attributes])
-        expect(roadtrip[:id]).to be(nil)
-        expect(roadtrip[:type]).to eq("roadtrip")
-        expect(roadtrip[:attributes]).to be_a Hash
-        expect(roadtrip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
-        expect(roadtrip[:attributes][:start_city]).to be_a String
-        expect(roadtrip[:attributes][:end_city]).to be_a String
-        expect(roadtrip[:attributes][:travel_time]).to eq("impossible")
-        expect(roadtrip[:attributes][:weather_at_eta]).to eq({})
+        expect(road_trip.keys).to eq([:id, :type, :attributes])
+        expect(road_trip[:id]).to be(nil)
+        expect(road_trip[:type]).to eq("road_trip")
+        expect(road_trip[:attributes]).to be_a Hash
+        expect(road_trip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
+        expect(road_trip[:attributes][:start_city]).to be_a String
+        expect(road_trip[:attributes][:end_city]).to be_a String
+        expect(road_trip[:attributes][:travel_time]).to eq("impossible")
+        expect(road_trip[:attributes][:weather_at_eta]).to eq({})
       end
     end
   end
@@ -80,7 +80,7 @@ describe 'Roadtrip API' do
   describe 'sad path testing' do
     it 'returns an error object when the incorrect or no api key is provided' do
       # wrong api key
-      roadtrip_params = {
+      road_trip_params = {
         origin: 'las vegas,nv',
         destination: 'denver,co',
         api_key: '123'
@@ -88,7 +88,7 @@ describe 'Roadtrip API' do
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
       expect(response.status).to eq(401)
 
@@ -103,14 +103,14 @@ describe 'Roadtrip API' do
       expect(response_body[:errors][0][:detail].first).to eq("Invalid credentials")
 
       # no api key
-      roadtrip_params = {
+      road_trip_params = {
         origin: 'las vegas,nv',
         destination: 'denver,co'
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
       expect(response.status).to eq(401)
 
@@ -121,14 +121,14 @@ describe 'Roadtrip API' do
 
     it 'returns an error object when origin, destination or both are missing' do
       # missing destination
-      roadtrip_params = {
+      road_trip_params = {
         origin: 'las vegas,nv',
         api_key: @api_key
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
       expect(response.status).to eq(400)
 
@@ -143,14 +143,14 @@ describe 'Roadtrip API' do
       expect(response_body[:errors][0][:detail].first).to eq("Origin and destination are required")
 
       # missing origin
-      roadtrip_params = {
+      road_trip_params = {
         destination: 'denver,co',
         api_key: @api_key
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
       expect(response.status).to eq(400)
 
@@ -165,7 +165,7 @@ describe 'Roadtrip API' do
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
 

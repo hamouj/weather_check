@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# app/facades/roadtrip_facade.rb
-class RoadtripFacade
+# app/facades/road_trip_facade.rb
+class RoadTripFacade
   def initialize(params)
     @origin = params[:origin]
     @destination = params[:destination]
@@ -13,33 +13,33 @@ class RoadtripFacade
     Location.new(location_data)
   end
 
-  def make_roadtrip
+  def make_road_trip
     data = MapquestService.get_route(@origin, @destination)
-    @roadtrip ||= if data[:route].key?(:routeError)
-                    Roadtrip.new(@origin, @destination, nil)
+    @road_trip ||= if data[:route].key?(:routeError)
+                    RoadTrip.new(@origin, @destination, nil)
                   else
-                    Roadtrip.new(@origin, @destination, data)
+                    RoadTrip.new(@origin, @destination, data)
                   end
   end
 
   def add_arrival_weather
     data = WeatherService.get_arrival_weather(find_lat_lng.lat_lng, formatted_arrival_date, arrival_time.hour)
     arrival_data = data[:forecast][:forecastday][0][:hour][0]
-    @roadtrip.weather_at_eta = ArrivalWeather.new(arrival_data)
+    @road_trip.weather_at_eta = ArrivalWeather.new(arrival_data)
   end
 
-  def complete_roadtrip
-    make_roadtrip
-    if @roadtrip.travel_time != "impossible"
+  def complete_road_trip
+    make_road_trip
+    if @road_trip.travel_time != "impossible"
       add_arrival_weather
     end
-    @roadtrip
+    @road_trip
   end
 
   private
 
   def arrival_time
-    DateTime.now + @roadtrip.time.partition(':').first.to_i.hour
+    DateTime.now + @road_trip.time.partition(':').first.to_i.hour
   end
 
   def formatted_arrival_date
