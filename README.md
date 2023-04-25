@@ -16,12 +16,14 @@ Weather Check is a REST API that provides information about the weather in a giv
     - save the Weather key as `weather_api_key:`
 
 ## Testing
-To run all tests:
- - In the command line, run `bundle exec rspec`
+To run all tests from your command line:
+ - run `bundle exec rspec`
 
  *All tests should be passing*
-
+ 
 Happy and sad path cases were accounted for and tested for each endpoint.
+
+Additionally, you can test each endpoint here [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/26085409-1cb627ef-d500-4f6f-b849-9b655205c7ed?action=collection%2Ffork&collection-url=entityId%3D26085409-1cb627ef-d500-4f6f-b849-9b655205c7ed%26entityType%3Dcollection%26workspaceId%3Df402ed1d-531c-4451-ad21-b6367689bff9)
 
 ## Endpoints
 <details>
