@@ -2,28 +2,30 @@
 
 ## About this Project
 
-Weather Check is a REST API that provides information about the weather in a given location (forecast). It also utilizes API key authentication to allow users to create a roadtrip and get information about the weather upon their arrival at their destination.
+Weather Check is a REST API that provides information about the weather in a given location. It also utilizes API key authentication to allow users to create a road trip and get information about the weather upon their arrival at their destination.
 
 ## Setup
 
-1. Fork and Clone the repo
+1. Fork and clone the repository
 2. Install gem packages: `bundle install`
 3. Setup the database: `rails db:{create,migrate}`
-4. Apply for an API key with Mapquest & Weather APIs
-5. Run `bundle exec figaro install` and add the api keys to the `./config/application.yml` file.
+4. Apply for an API key with [Mapquest](https://developer.mapquest.com/user/login/sign-up) & [Weather API](https://www.weatherapi.com/signup.aspx)
+5. Run `bundle exec figaro install` and add the API keys to the `./config/application.yml` file.
 
-    - save the MapQuest key as `mapquest_api_key:`
-    - save the Weather key as `weather_api_key:`
+    - Save the MapQuest key as `mapquest_api_key`
+    - Save the Weather key as `weather_api_key`
 
 ## Testing
 To run all tests from your command line:
  - run `bundle exec rspec`
 
  *All tests should be passing*
- 
+
 Happy and sad path cases were accounted for and tested for each endpoint.
 
 Additionally, you can test each endpoint here [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/26085409-1cb627ef-d500-4f6f-b849-9b655205c7ed?action=collection%2Ffork&collection-url=entityId%3D26085409-1cb627ef-d500-4f6f-b849-9b655205c7ed%26entityType%3Dcollection%26workspaceId%3Df402ed1d-531c-4451-ad21-b6367689bff9)
+
+**NOTE:** *You will need to sign up as a user by visiting the POST '/api/v0/users' endpoint with the correct request body before you will be able to access the road_trip endpoint.*
 
 ## Endpoints
 <details>
@@ -359,6 +361,7 @@ Response:
 </code>
 </pre>
 </details>
+
 
 ## APIs Used
 
