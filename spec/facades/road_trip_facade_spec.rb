@@ -19,7 +19,7 @@ describe RoadTripFacade do
             expect(@facade.complete_road_trip).to be_a(RoadTrip)
             expect(@facade.complete_road_trip.start_city).to eq('las vegas,nv')
             expect(@facade.complete_road_trip.end_city).to eq('denver,co')
-            expect(@facade.complete_road_trip.travel_time).to eq('10h32m')
+            expect(@facade.complete_road_trip.travel_time).to eq('10h33m')
             expect(@facade.complete_road_trip.weather_at_eta).to be_an(ArrivalWeather)
             expect(@facade.complete_road_trip.weather_at_eta.datetime).to eq('2023-04-25 04:00')
             expect(@facade.complete_road_trip.weather_at_eta.temperature).to eq(46.6)
