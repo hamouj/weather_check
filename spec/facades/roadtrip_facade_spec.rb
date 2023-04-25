@@ -27,6 +27,18 @@ describe RoadtripFacade do
           end
         end
       end
+
+      it 'creates a Roadtrip object with an impossible travel time and empty weather_at_eta attribute' do
+        @facade2 = RoadtripFacade.new({origin: 'new york,ny', destination: 'london,uk'})
+        
+        VCR.use_cassette('ny_to_uk', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
+          expect(@facade2.complete_roadtrip).to be_a(Roadtrip)
+          expect(@facade2.complete_roadtrip.start_city).to eq('new york,ny')
+          expect(@facade2.complete_roadtrip.end_city).to eq('london,uk')
+          expect(@facade2.complete_roadtrip.travel_time).to eq('impossible')
+          expect(@facade2.complete_roadtrip.weather_at_eta).to eq({})
+        end
+      end
     end
   end
 end
