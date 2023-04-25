@@ -21,8 +21,8 @@ describe MapquestService do
 
     context '#get_route()' do
       it 'returns the travel time for a roadtrip' do
-        VCR.use_cassette('lv_to_denver', serialize_with: :json) do
-          roadtrip = MapquestService.get_route('las vegas, nv', 'denver, co')
+        VCR.use_cassette('lv_to_denver', serialize_with: :json, match_requests_on: [:method, :path]) do
+          roadtrip = MapquestService.get_route('las vegas,nv', 'denver,co')
 
           expect(roadtrip).to be_a Hash
           expect(roadtrip).to have_key :route
