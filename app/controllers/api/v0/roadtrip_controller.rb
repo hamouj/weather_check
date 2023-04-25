@@ -4,7 +4,7 @@
 class Api::V0::RoadtripController < ApplicationController
   before_action :authenticate_with_key, :check_params
 
-  def index
+  def create
     roadtrip = RoadtripFacade.new(params).complete_roadtrip
     render json: RoadtripSerializer.new(roadtrip)
   end
