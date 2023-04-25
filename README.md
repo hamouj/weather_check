@@ -30,14 +30,17 @@ Additionally, you can test each endpoint here [![Run in Postman](https://run.pst
 ## Endpoints
 <details>
 <summary>GET '/api/v0/forecast'</summary>
+
+Request Params:
 <pre>
 <code>
-Request Params:
   location = (location)
 </code>
+</pre>
 
-<code>
 Response:
+<pre>
+<code>
   {
     "data": {
         "id": null,
@@ -255,18 +258,21 @@ Response:
 
 <details>
 <summary>POST '/api/v0/users'</summary>
+
+Request Body:
 <pre>
 <code>
-Request Body:
 {
     "email": "dogood@gmail.com",
     "password": "awesome",
     "password_confirmation": "awesome"
 }
 </code>
+</pre>
 
-<code>
 Response:
+<pre>
+<code>
 {
     "data": {
         "id": "6",
@@ -283,17 +289,20 @@ Response:
 
 <details>
 <summary> POST 'api/v0/sessions'</summary>
+
+Request Body:
 <pre>
 <code>
-Request Body:
 {
     "email": "dogood@gmail.com",
     "password": "awesome"
 }
 </code>
+</pre>
 
-<code>
 Response:
+<pre>
+<code>
 {
     "data": {
         "id": "6",
@@ -310,18 +319,21 @@ Response:
 
 <details>
 <summary>POST '/api/v0/road_trip' (Possible Route)</summary>
+
+Request Body:
 <pre>
 <code>
-Request Body:
 {
     "origin": "Las Vegas, NV",
     "destination": "San Diego, CA",
     "api_key": "913cdfa4c724c60ef5d3f77482d0697c"
 }
 </code>
+</pre>
 
-<code>
 Response:
+<pre>
+<code>
 {
     "data": {
         "id": null,
@@ -344,18 +356,21 @@ Response:
 
 <details>
 <summary>POST 'api/v0/road_trip' - Impossible Route</summary>
+
+Request Body:
 <pre>
 <code>
-Request Body:
 {
     "origin": "Las Vegas, NV",
     "destination": "Melbourne, AU",
     "api_key": "913cdfa4c724c60ef5d3f77482d0697c"
 }
 </code>
+</pre>
 
-<code>
 Response:
+<pre>
+<code>
 {
     "data": {
         "id": null,
