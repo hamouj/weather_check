@@ -88,7 +88,7 @@ describe 'Sessions API' do
 
       response_body = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response_body[:errors][0][:detail].first).to eq("Invalid email/password")
+      expect(response_body[:errors][0][:detail].first).to eq("Invalid credentials")
     end
 
     it 'returns a status 401 and error message when the email and password do not match the database' do
