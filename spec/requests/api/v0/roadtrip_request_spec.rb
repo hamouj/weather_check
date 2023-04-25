@@ -3,14 +3,14 @@ require 'rails_helper'
 describe 'Roadtrip API' do
   before(:each) do
     # create user
-      user_params = {
-        email: 'hailey@gmail.com',
-        password: 'ilovemymom',
-        password_confirmation: 'ilovemymom'
-      }
-      headers = {"CONTENT_TYPE" => "application/json"}
-      post '/api/v0/users', headers:, params: JSON.generate(user_params)
-      @api_key = User.last.api_key
+    user_params = {
+      email: 'hailey@gmail.com',
+      password: 'ilovemymom',
+      password_confirmation: 'ilovemymom'
+    }
+    headers = { "CONTENT_TYPE" => "application/json" }
+    post '/api/v0/users', headers:, params: JSON.generate(user_params)
+    @api_key = User.last.api_key
   end
 
   describe 'happy path testing' do
@@ -24,7 +24,6 @@ describe 'Roadtrip API' do
           }
 
           get '/api/v0/roadtrip', params: roadtrip_params
-
 
           expect(response).to be_successful
 

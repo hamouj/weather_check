@@ -7,22 +7,22 @@ describe ArrivalWeather do
         denver_weather_data = {
           "forecast": {
             "forecastday": [
-                    "hour": [
-                        {
-                            "time_epoch": 1682326800,
-                            "time": "2023-04-24 02:00",
-                            "temp_c": 19.4,
-                            "temp_f": 66.9,
-                            "is_day": 0,
-                            "condition": {
-                                "text": "Clear",
-                                "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
-                                "code": 1000
-                            }
-                        }
-                    ]
-                  ]
+              "hour": [
+                {
+                  "time_epoch": 1682326800,
+                  "time": "2023-04-24 02:00",
+                  "temp_c": 19.4,
+                  "temp_f": 66.9,
+                  "is_day": 0,
+                  "condition": {
+                    "text": "Clear",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+                    "code": 1000
+                  }
                 }
+              ]
+            ]
+          }
         }
 
         denver_weather = ArrivalWeather.new(denver_weather_data[:forecast][:forecastday][0][:hour][0])

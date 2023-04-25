@@ -5,7 +5,7 @@ class MapquestService
   def self.get_route(origin, destination)
     get_url("directions/v1/route?from=#{origin}&to=#{destination}")
   end
-  
+
   def self.get_lat_lng(location)
     get_url("geocoding/v1/address?location=#{location}")
   end

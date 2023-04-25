@@ -15,11 +15,11 @@ class RoadtripFacade
 
   def make_roadtrip
     data = MapquestService.get_route(@origin, @destination)
-    if data[:route].key?(:routeError)
-      @roadtrip ||= Roadtrip.new(@origin, @destination, nil)
-    else
-      @roadtrip ||= Roadtrip.new(@origin, @destination, data)
-    end
+    @roadtrip ||= if data[:route].key?(:routeError)
+                    Roadtrip.new(@origin, @destination, nil)
+                  else
+                    Roadtrip.new(@origin, @destination, data)
+                  end
   end
 
   def add_arrival_weather
@@ -34,14 +34,15 @@ class RoadtripFacade
       add_arrival_weather
     end
     @roadtrip
-  end 
+  end
 
   private
-    def arrival_time
-      DateTime.now + (@roadtrip.time.partition(':').first.to_i).hour
-    end
 
-    def formatted_arrival_date
-      arrival_time.strftime("%Y-%m-%d")
-    end
+  def arrival_time
+    DateTime.now + @roadtrip.time.partition(':').first.to_i.hour
+  end
+
+  def formatted_arrival_date
+    arrival_time.strftime("%Y-%m-%d")
+  end
 end

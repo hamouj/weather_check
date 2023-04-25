@@ -7,7 +7,7 @@ describe 'Sessions API' do
       password: 'ilovemymom',
       password_confirmation: 'ilovemymom'
     }
-    headers = {"CONTENT_TYPE" => "application/json"}
+    headers = { "CONTENT_TYPE" => "application/json" }
 
     post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -20,7 +20,7 @@ describe 'Sessions API' do
         email: 'hailey@gmail.com',
         password: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
 
@@ -45,7 +45,7 @@ describe 'Sessions API' do
       user_params = {
         email: 'hailey@gmail.com'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
 
@@ -64,7 +64,7 @@ describe 'Sessions API' do
       user_params = {
         password: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
 
@@ -80,7 +80,7 @@ describe 'Sessions API' do
         email: 'something@gmail.com',
         password: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
 
@@ -96,7 +96,7 @@ describe 'Sessions API' do
         email: 'hailey@gmail.com',
         password: 'ilovemom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
 

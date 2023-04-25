@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RoadtripFacade do
   describe 'instance methods' do
     before(:each) do
-      @facade = RoadtripFacade.new({origin: 'las vegas,nv', destination: 'denver,co'})
+      @facade = RoadtripFacade.new({ origin: 'las vegas,nv', destination: 'denver,co' })
     end
 
     context '#initialize' do
@@ -29,8 +29,8 @@ describe RoadtripFacade do
       end
 
       it 'creates a Roadtrip object with an impossible travel time and empty weather_at_eta attribute' do
-        @facade2 = RoadtripFacade.new({origin: 'new york,ny', destination: 'london,uk'})
-        
+        @facade2 = RoadtripFacade.new({ origin: 'new york,ny', destination: 'london,uk' })
+
         VCR.use_cassette('ny_to_uk', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
           expect(@facade2.complete_roadtrip).to be_a(Roadtrip)
           expect(@facade2.complete_roadtrip.start_city).to eq('new york,ny')

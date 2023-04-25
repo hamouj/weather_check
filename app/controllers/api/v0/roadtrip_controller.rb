@@ -6,17 +6,18 @@ class Api::V0::RoadtripController < ApplicationController
 
   def index
     roadtrip = RoadtripFacade.new(params).complete_roadtrip
-    render json: RoadtripSerializer.new(roadtrip) 
+    render json: RoadtripSerializer.new(roadtrip)
   end
 
   private
-    def authenticate_with_key
-      User.find_by!(api_key: params[:api_key])
-    end
 
-    def check_params
-      return unless params[:origin].nil? || params[:destination].nil?
+  def authenticate_with_key
+    User.find_by!(api_key: params[:api_key])
+  end
 
-      render json: ErrorSerializer.invalid_request("Origin and destination are required"), status: 400
-    end
+  def check_params
+    return unless params[:origin].nil? || params[:destination].nil?
+
+    render json: ErrorSerializer.invalid_request("Origin and destination are required"), status: 400
+  end
 end

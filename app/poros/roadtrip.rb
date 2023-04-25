@@ -9,7 +9,7 @@ class Roadtrip
               :time
 
   attr_accessor :weather_at_eta
-  
+
   def initialize(origin, destination, route_data)
     @id = nil
     @start_city = origin
@@ -25,9 +25,9 @@ class Roadtrip
   end
 
   def format_travel_time(time)
-      minutes_seconds = time.divmod(60)
-      hours_minutes = minutes_seconds.first.divmod(60)
-      day_hours = hours_minutes.first.divmod(24)
+    minutes_seconds = time.divmod(60)
+    hours_minutes = minutes_seconds.first.divmod(60)
+    day_hours = hours_minutes.first.divmod(24)
 
     if day_hours.first == 0
       "#{hours_minutes.first}h#{hours_minutes.second}m"
