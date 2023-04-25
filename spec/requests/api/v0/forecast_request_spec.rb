@@ -108,7 +108,7 @@ describe 'Forecast API' do
     it 'returns an error object when location query parameters are not included' do
       get "/api/v0/forecast"
 
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
 
       response_body = JSON.parse(response.body, symbolize_names: true)
 
@@ -116,7 +116,7 @@ describe 'Forecast API' do
       expect(response_body).to have_key(:errors)
       expect(response_body[:errors]).to be_an Array
       expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
-      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:status]).to eq('400')
       expect(response_body[:errors][0][:title]).to eq('Invalid Request')
       expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
     end
@@ -124,12 +124,12 @@ describe 'Forecast API' do
     it 'returns an error object when location query parameters are left blank' do
       get "/api/v0/forecast?location="
 
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
 
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body).to have_key(:errors)
-      expect(response_body[:errors][0][:status]).to eq('404')
+      expect(response_body[:errors][0][:status]).to eq('400')
       expect(response_body[:errors][0][:title]).to eq('Invalid Request')
       expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
     end
