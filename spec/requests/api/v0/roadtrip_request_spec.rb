@@ -57,7 +57,7 @@ describe 'Roadtrip API' do
         }
 
         headers = { "CONTENT_TYPE" => "application/json" }
-          
+
         post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
         expect(response).to be_successful
@@ -87,7 +87,7 @@ describe 'Roadtrip API' do
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
-          
+
       post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(401)
@@ -109,7 +109,7 @@ describe 'Roadtrip API' do
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
-          
+
       post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(401)
@@ -127,7 +127,7 @@ describe 'Roadtrip API' do
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
-          
+
       post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
@@ -149,7 +149,7 @@ describe 'Roadtrip API' do
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
-          
+
       post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
@@ -164,7 +164,7 @@ describe 'Roadtrip API' do
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
-          
+
       post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
