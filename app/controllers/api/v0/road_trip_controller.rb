@@ -6,7 +6,11 @@ class Api::V0::RoadTripController < ApplicationController
 
   def create
     road_trip = RoadTripFacade.new(params).complete_road_trip
-    render json: RoadTripSerializer.new(road_trip)
+    if road_trip == "Origin/Destination is not valid"
+      render json: ErrorSerializer.invalid_request(road_trip), status: 400
+    else
+      render json: RoadTripSerializer.new(road_trip)
+    end
   end
 
   private
