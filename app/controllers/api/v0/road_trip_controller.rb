@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# app/controllers/api/v0/roadtrip_controller.rb
-class Api::V0::RoadtripController < ApplicationController
+# app/controllers/api/v0/road_trip_controller.rb
+class Api::V0::RoadTripController < ApplicationController
   before_action :authenticate_with_key, :check_params
 
   def create
-    roadtrip = RoadtripFacade.new(params).complete_roadtrip
-    render json: RoadtripSerializer.new(roadtrip)
+    road_trip = RoadTripFacade.new(params).complete_road_trip
+    render json: RoadTripSerializer.new(road_trip)
   end
 
   private
