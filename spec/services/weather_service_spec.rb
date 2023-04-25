@@ -77,5 +77,26 @@ describe WeatherService do
         expect(first_hour_weather[:condition][:icon]).to be_a String
       end
     end
+
+    context '#get_arrival_weather()' do
+      it 'returns the weather for a specific location and time' do
+        VCR.use_cassette('roadtrip_weather', serialize_with: :json, match_requests_on: [:method, :path]) do
+          roadtrip_weather = WeatherService.get_arrival_weather('denver,co', '2023-04-25', 1)
+
+          expect(roadtrip_weather).to be_a Hash
+          expect(roadtrip_weather).to have_key :forecast
+          expect(roadtrip_weather[:forecast]).to have_key :forecastday
+          expect(roadtrip_weather[:forecast][:forecastday][0]).to have_key :hour
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour]).to be_an Array
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0]).to have_key :time
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0][:time]).to be_a String
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0]).to have_key :temp_f
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0][:temp_f]).to be_a Float
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0]).to have_key :condition
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0][:condition]).to have_key :text
+          expect(roadtrip_weather[:forecast][:forecastday][0][:hour][0][:condition][:text]).to be_a String
+        end
+      end
+    end
   end
 end

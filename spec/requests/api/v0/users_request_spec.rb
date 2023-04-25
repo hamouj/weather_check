@@ -8,7 +8,7 @@ describe 'Users API' do
         password: 'ilovemymom',
         password_confirmation: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
       created_user = User.last
@@ -35,7 +35,7 @@ describe 'Users API' do
       user_params = {
         email: 'hailey@gmail.com'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -57,7 +57,7 @@ describe 'Users API' do
         password: 'ilovemymom',
         password_confirmation: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -72,7 +72,7 @@ describe 'Users API' do
         email: 'haily@gmail.com',
         password: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -87,7 +87,7 @@ describe 'Users API' do
         email: 'haily@gmail.com',
         password_confirmation: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -104,7 +104,7 @@ describe 'Users API' do
         password: 'abc123',
         password_confirmation: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -128,7 +128,7 @@ describe 'Users API' do
         password: 'ilovemymom',
         password_confirmation: 'ilovemymom'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(user_params)
 
@@ -138,7 +138,7 @@ describe 'Users API' do
         password: 'yourock',
         password_confirmation: 'yourock'
       }
-      headers = {"CONTENT_TYPE" => "application/json"}
+      headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/users', headers:, params: JSON.generate(new_user_params)
 

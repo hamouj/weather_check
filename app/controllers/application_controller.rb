@@ -7,6 +7,6 @@ class ApplicationController < ActionController::API
   end
 
   def bad_credentials_error
-    render json: ErrorSerializer.unauthorized("Invalid email/password"), status: 401
+    render json: ErrorSerializer.unauthorized("Invalid credentials"), status: 401
   end
 end

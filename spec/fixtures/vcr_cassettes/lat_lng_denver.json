@@ -1,0 +1,169 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://www.mapquestapi.com/geocoding/v1/address?key=wTOER6iuW4mK6RNe79CESqID0LKkMuon&location=denver,co",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Date": [
+            "Tue, 25 Apr 2023 02:50:16 GMT"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Content-Length": [
+            "797"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "X-Ratelimit-Limit-2628000": [
+            "15000"
+          ],
+          "X-Ratelimit-Remaining-2628000": [
+            "14731"
+          ],
+          "Ratelimit-Limit": [
+            "15000"
+          ],
+          "Ratelimit-Remaining": [
+            "14731"
+          ],
+          "Ratelimit-Reset": [
+            "2156984"
+          ],
+          "X-Powered-By": [
+            "MapQuest"
+          ],
+          "X-Request-Id": [
+            "e87e2ba0-e313-11ed-aa3c-cb240186020f"
+          ],
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "X-Transaction-Count": [
+            "all=1,geocoding=1"
+          ],
+          "Etag": [
+            "W/\"31d-zftSuFzJHtZuo9xZ/Qg7M7lyAF4\""
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"info\":{\"statuscode\":0,\"copyright\":{\"text\":\"© 2022 MapQuest, Inc.\",\"imageUrl\":\"http://api.mqcdn.com/res/mqlogo.gif\",\"imageAltText\":\"© 2022 MapQuest, Inc.\"},\"messages\":[]},\"options\":{\"maxResults\":-1,\"ignoreLatLngInput\":false},\"results\":[{\"providedLocation\":{\"location\":\"denver,co\"},\"locations\":[{\"street\":\"\",\"adminArea6\":\"\",\"adminArea6Type\":\"Neighborhood\",\"adminArea5\":\"Denver\",\"adminArea5Type\":\"City\",\"adminArea4\":\"Denver\",\"adminArea4Type\":\"County\",\"adminArea3\":\"CO\",\"adminArea3Type\":\"State\",\"adminArea1\":\"US\",\"adminArea1Type\":\"Country\",\"postalCode\":\"\",\"geocodeQualityCode\":\"A5XAX\",\"geocodeQuality\":\"CITY\",\"dragPoint\":false,\"sideOfStreet\":\"N\",\"linkId\":\"0\",\"unknownInput\":\"\",\"type\":\"s\",\"latLng\":{\"lat\":39.74001,\"lng\":-104.99202},\"displayLatLng\":{\"lat\":39.74001,\"lng\":-104.99202},\"mapUrl\":\"\"}]}]}"
+        }
+      },
+      "recorded_at": "Tue, 25 Apr 2023 02:50:16 GMT"
+    },
+    {
+      "request": {
+        "method": "get",
+        "uri": "http://api.weatherapi.com/v1/forecast.json?dt=2023-04-25&hour=5&key=c799eea6f4934b11b4f150934232204&q=39.74001,-104.99202",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Date": [
+            "Tue, 25 Apr 2023 02:50:16 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Vary": [
+            "Accept-Encoding"
+          ],
+          "Server": [
+            "BunnyCDN-LA1-987"
+          ],
+          "Cdn-Pullzone": [
+            "93447"
+          ],
+          "Cdn-Uid": [
+            "8fa3a04a-75d9-4707-8056-b7b33c8ac7fe"
+          ],
+          "Cdn-Requestcountrycode": [
+            "US"
+          ],
+          "Cache-Control": [
+            "public, max-age=180"
+          ],
+          "Cdn-Proxyver": [
+            "1.03"
+          ],
+          "Cdn-Requestpullsuccess": [
+            "True"
+          ],
+          "Cdn-Requestpullcode": [
+            "200"
+          ],
+          "Cdn-Cachedat": [
+            "04/25/2023 02:50:16"
+          ],
+          "Cdn-Edgestorageid": [
+            "996"
+          ],
+          "Cdn-Status": [
+            "200"
+          ],
+          "Cdn-Requestid": [
+            "a5820832dea4b4bec90788ef5acbe57f"
+          ],
+          "Cdn-Cache": [
+            "EXPIRED"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"location\":{\"name\":\"Denver\",\"region\":\"Colorado\",\"country\":\"United States of America\",\"lat\":39.74,\"lon\":-104.99,\"tz_id\":\"America/Denver\",\"localtime_epoch\":1682391016,\"localtime\":\"2023-04-24 20:50\"},\"current\":{\"last_updated_epoch\":1682390700,\"last_updated\":\"2023-04-24 20:45\",\"temp_c\":13.0,\"temp_f\":55.4,\"is_day\":0,\"condition\":{\"text\":\"Partly cloudy\",\"icon\":\"//cdn.weatherapi.com/weather/64x64/night/116.png\",\"code\":1003},\"wind_mph\":5.6,\"wind_kph\":9.0,\"wind_degree\":150,\"wind_dir\":\"SSE\",\"pressure_mb\":1009.0,\"pressure_in\":29.8,\"precip_mm\":0.0,\"precip_in\":0.0,\"humidity\":26,\"cloud\":75,\"feelslike_c\":11.5,\"feelslike_f\":52.6,\"vis_km\":16.0,\"vis_miles\":9.0,\"uv\":1.0,\"gust_mph\":11.9,\"gust_kph\":19.1},\"forecast\":{\"forecastday\":[{\"date\":\"2023-04-25\",\"date_epoch\":1682380800,\"day\":{\"maxtemp_c\":14.6,\"maxtemp_f\":58.3,\"mintemp_c\":4.6,\"mintemp_f\":40.3,\"avgtemp_c\":9.4,\"avgtemp_f\":48.8,\"maxwind_mph\":18.1,\"maxwind_kph\":29.2,\"totalprecip_mm\":5.3,\"totalprecip_in\":0.21,\"totalsnow_cm\":0.0,\"avgvis_km\":9.5,\"avgvis_miles\":5.0,\"avghumidity\":69.0,\"daily_will_it_rain\":1,\"daily_chance_of_rain\":87,\"daily_will_it_snow\":0,\"daily_chance_of_snow\":0,\"condition\":{\"text\":\"Moderate rain\",\"icon\":\"//cdn.weatherapi.com/weather/64x64/day/302.png\",\"code\":1189},\"uv\":2.0},\"astro\":{\"sunrise\":\"06:08 AM\",\"sunset\":\"07:48 PM\",\"moonrise\":\"09:51 AM\",\"moonset\":\"12:59 AM\",\"moon_phase\":\"Waxing Crescent\",\"moon_illumination\":\"24\"},\"hour\":[{\"time_epoch\":1682420400,\"time\":\"2023-04-25 05:00\",\"temp_c\":7.9,\"temp_f\":46.2,\"is_day\":0,\"condition\":{\"text\":\"Thundery outbreaks possible\",\"icon\":\"//cdn.weatherapi.com/weather/64x64/night/200.png\",\"code\":1087},\"wind_mph\":5.4,\"wind_kph\":8.6,\"wind_degree\":317,\"wind_dir\":\"NW\",\"pressure_mb\":1005.0,\"pressure_in\":29.67,\"precip_mm\":0.0,\"precip_in\":0.0,\"humidity\":74,\"cloud\":46,\"feelslike_c\":6.4,\"feelslike_f\":43.5,\"windchill_c\":6.4,\"windchill_f\":43.5,\"heatindex_c\":7.9,\"heatindex_f\":46.2,\"dewpoint_c\":3.6,\"dewpoint_f\":38.5,\"will_it_rain\":0,\"chance_of_rain\":0,\"will_it_snow\":0,\"chance_of_snow\":0,\"vis_km\":9.0,\"vis_miles\":5.0,\"gust_mph\":7.2,\"gust_kph\":11.5,\"uv\":1.0}]}]}}"
+        }
+      },
+      "recorded_at": "Tue, 25 Apr 2023 02:50:16 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.1.0"
+}
