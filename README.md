@@ -34,7 +34,9 @@ Additionally, you can test each endpoint here [![Run in Postman](https://run.pst
 <code>
 Request Params:
   location = (location)
+</code>
 
+<code>
 Response:
   {
     "data": {
@@ -261,7 +263,9 @@ Request Body:
     "password": "awesome",
     "password_confirmation": "awesome"
 }
+</code>
 
+<code>
 Response:
 {
     "data": {
@@ -286,7 +290,9 @@ Request Body:
     "email": "dogood@gmail.com",
     "password": "awesome"
 }
+</code>
 
+<code>
 Response:
 {
     "data": {
@@ -312,7 +318,9 @@ Request Body:
     "destination": "San Diego, CA",
     "api_key": "913cdfa4c724c60ef5d3f77482d0697c"
 }
+</code>
 
+<code>
 Response:
 {
     "data": {
@@ -344,7 +352,9 @@ Request Body:
     "destination": "Melbourne, AU",
     "api_key": "913cdfa4c724c60ef5d3f77482d0697c"
 }
+</code>
 
+<code>
 Response:
 {
     "data": {
