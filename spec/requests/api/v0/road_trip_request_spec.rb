@@ -15,8 +15,8 @@ describe 'Roadtrip API' do
 
   describe 'happy path testing' do
     it 'sends a roadtrip object with attributes when the trip is possible' do
-      VCR.use_cassette('lv_to_denver', serialize_with: :json, match_requests_on: [:method, :path]) do
-        VCR.use_cassette('lat_lng_denver', serialize_with: :json, match_requests_on: [:method, :path]) do
+      VCR.use_cassette('lv_to_denver', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
+        VCR.use_cassette('lat_lng_denver', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
           road_trip_params = {
             origin: 'las vegas,nv',
             destination: 'denver,co',
@@ -37,7 +37,9 @@ describe 'Roadtrip API' do
           expect(road_trip[:attributes]).to be_a Hash
           expect(road_trip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
           expect(road_trip[:attributes][:start_city]).to be_a String
+          expect(road_trip[:attributes][:start_city]).to eq(road_trip_params[:origin])
           expect(road_trip[:attributes][:end_city]).to be_a String
+          expect(road_trip[:attributes][:end_city]).to eq(road_trip_params[:destination])
           expect(road_trip[:attributes][:travel_time]).to be_a String
           expect(road_trip[:attributes][:weather_at_eta]).to be_a Hash
           expect(road_trip[:attributes][:weather_at_eta].keys).to eq([:datetime, :temperature, :condition])
@@ -70,14 +72,37 @@ describe 'Roadtrip API' do
         expect(road_trip[:attributes]).to be_a Hash
         expect(road_trip[:attributes].keys).to eq([:start_city, :end_city, :travel_time, :weather_at_eta])
         expect(road_trip[:attributes][:start_city]).to be_a String
+        expect(road_trip[:attributes][:start_city]).to eq(road_trip_params[:origin])
         expect(road_trip[:attributes][:end_city]).to be_a String
+        expect(road_trip[:attributes][:end_city]).to eq(road_trip_params[:destination])
         expect(road_trip[:attributes][:travel_time]).to eq("impossible")
         expect(road_trip[:attributes][:weather_at_eta]).to eq({})
       end
     end
+
+    it 'only sends required information based on the json contract' do
+      VCR.use_cassette('lv_to_denver', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
+        VCR.use_cassette('lat_lng_denver', serialize_with: :json, match_requests_on: [:method, :path], allow_playback_repeats: true) do
+          road_trip_params = {
+            origin: 'las vegas,nv',
+            destination: 'denver,co',
+            api_key: @api_key
+          }
+
+          headers = { "CONTENT_TYPE" => "application/json" }
+
+          post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
+
+          response_body = JSON.parse(response.body, symbolize_names: true)[:data]
+
+          expect(response_body[:attributes][:weather_at_eta]).to_not have_key :id
+          expect(response_body[:attributes]).to_not have_key :type
+        end
+      end
+    end
   end
 
-  describe 'sad path testing' do
+  describe 'sad path/edge case testing' do
     it 'returns an error object when the incorrect or no api key is provided' do
       # wrong api key
       road_trip_params = {
@@ -159,19 +184,70 @@ describe 'Roadtrip API' do
       expect(response_body[:errors][0][:detail].first).to eq("Origin and destination are required")
 
       # missing destination & origin
-      roadtrip_params = {
+      road_trip_params = {
         api_key: @api_key
       }
 
       headers = { "CONTENT_TYPE" => "application/json" }
 
-      post '/api/v0/road_trip', headers:, params: JSON.generate(roadtrip_params)
+      post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
 
       expect(response.status).to eq(400)
 
       response_body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response_body[:errors][0][:detail].first).to eq("Origin and destination are required")
+    end
+
+    it 'returns an error when the origin or destination are not real places' do
+      # destination invalid
+      VCR.use_cassette('incorrect_roadtrip_destination', serialize_with: :json) do
+        road_trip_params = {
+          origin: 'las vegas,nv',
+          destination: 'dkjsdj',
+          api_key: @api_key
+        }
+
+        headers = { "CONTENT_TYPE" => "application/json" }
+
+        post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
+
+        expect(response.status).to eq(400)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body).to be_a Hash
+        expect(response_body).to have_key(:errors)
+        expect(response_body[:errors]).to be_an Array
+        expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
+        expect(response_body[:errors][0][:status]).to eq('400')
+        expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+        expect(response_body[:errors][0][:detail].first).to eq("Origin/Destination is not valid")
+      end
+
+      VCR.use_cassette('incorrect_roadtrip_origin', serialize_with: :json) do
+        road_trip_params = {
+          origin: 'lkjd',
+          destination: 'denver,co',
+          api_key: @api_key
+        }
+
+        headers = { "CONTENT_TYPE" => "application/json" }
+
+        post '/api/v0/road_trip', headers:, params: JSON.generate(road_trip_params)
+
+        expect(response.status).to eq(400)
+
+        response_body = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response_body).to be_a Hash
+        expect(response_body).to have_key(:errors)
+        expect(response_body[:errors]).to be_an Array
+        expect(response_body[:errors][0].keys).to eq([:status, :title, :detail])
+        expect(response_body[:errors][0][:status]).to eq('400')
+        expect(response_body[:errors][0][:title]).to eq('Invalid Request')
+        expect(response_body[:errors][0][:detail].first).to eq("Origin/Destination is not valid")
+      end
     end
   end
 end
