@@ -23,7 +23,9 @@ describe 'Roadtrip API' do
             api_key: @api_key
           }
 
-          get '/api/v0/roadtrip', params: roadtrip_params
+          headers = { "CONTENT_TYPE" => "application/json" }
+
+          post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
           expect(response).to be_successful
 
@@ -54,7 +56,9 @@ describe 'Roadtrip API' do
           api_key: @api_key
         }
 
-        get '/api/v0/roadtrip', params: roadtrip_params
+        headers = { "CONTENT_TYPE" => "application/json" }
+
+        post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
         expect(response).to be_successful
 
@@ -82,7 +86,9 @@ describe 'Roadtrip API' do
         api_key: '123'
       }
 
-      get '/api/v0/roadtrip', params: roadtrip_params
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(401)
 
@@ -102,7 +108,9 @@ describe 'Roadtrip API' do
         destination: 'denver,co'
       }
 
-      get '/api/v0/roadtrip', params: roadtrip_params
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(401)
 
@@ -118,7 +126,9 @@ describe 'Roadtrip API' do
         api_key: @api_key
       }
 
-      get '/api/v0/roadtrip', params: roadtrip_params
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
 
@@ -138,7 +148,9 @@ describe 'Roadtrip API' do
         api_key: @api_key
       }
 
-      get '/api/v0/roadtrip', params: roadtrip_params
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
 
@@ -151,7 +163,9 @@ describe 'Roadtrip API' do
         api_key: @api_key
       }
 
-      get '/api/v0/roadtrip', params: roadtrip_params
+      headers = { "CONTENT_TYPE" => "application/json" }
+
+      post '/api/v0/roadtrip', headers:, params: JSON.generate(roadtrip_params)
 
       expect(response.status).to eq(400)
 
