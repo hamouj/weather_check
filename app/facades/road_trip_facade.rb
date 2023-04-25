@@ -16,10 +16,10 @@ class RoadTripFacade
   def make_road_trip
     data = MapquestService.get_route(@origin, @destination)
     @road_trip ||= if data[:route].key?(:routeError)
-                    RoadTrip.new(@origin, @destination, nil)
-                  else
-                    RoadTrip.new(@origin, @destination, data)
-                  end
+                     RoadTrip.new(@origin, @destination, nil)
+                   else
+                     RoadTrip.new(@origin, @destination, data)
+                   end
   end
 
   def add_arrival_weather
