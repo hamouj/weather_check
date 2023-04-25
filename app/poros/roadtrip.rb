@@ -4,11 +4,28 @@
 class Roadtrip
   attr_reader :start_city,
               :end_city,
-              :travel_time
+              :travel_time,
+              :time
+
+  attr_accessor :weather_at_eta
   
-  def initialize(params, route_data)
-    @start_city = params[:origin]
-    @end_city = params[:destination]
-    @travel_time = (route_data[:route][:formattedTime]).to_datetime.strftime("%Hh%Mm")
+  def initialize(origin, destination, route_data)
+    @start_city = origin
+    @end_city = destination
+    @travel_time = format_travel_time(route_data[:route][:time])
+    @time = route_data[:route][:formattedTime]
+    @weather_at_eta = nil
+  end
+
+  def format_travel_time(time)
+      minutes_seconds = time.divmod(60)
+      hours_minutes = minutes_seconds.first.divmod(60)
+      day_hours = hours_minutes.first.divmod(24)
+
+    if day_hours.first == 0
+      "#{hours_minutes.first}h#{hours_minutes.second}m"
+    else
+      "#{day_hours.first}d#{day_hours.second}h#{hours_minutes.second}m"
+    end
   end
 end
