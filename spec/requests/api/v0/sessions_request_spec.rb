@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Sessions API' do
   before(:each) do
+    # create user
     user_params = {
       email: 'hailey@gmail.com',
       password: 'ilovemymom',
@@ -15,7 +16,7 @@ describe 'Sessions API' do
   end
 
   describe 'happy path testing' do
-    it 'authenticates a user and sends the user email and api_key' do
+    before(:each) do
       user_params = {
         email: 'hailey@gmail.com',
         password: 'ilovemymom'
@@ -23,7 +24,9 @@ describe 'Sessions API' do
       headers = { "CONTENT_TYPE" => "application/json" }
 
       post '/api/v0/sessions', headers:, params: JSON.generate(user_params)
+    end
 
+    it 'authenticates a user and sends the user email and api_key' do
       expect(response.status).to eq(200)
 
       response_body = JSON.parse(response.body, symbolize_names: true)
@@ -38,9 +41,15 @@ describe 'Sessions API' do
       expect(response_body[:data][:attributes][:api_key]).to eq(@user.api_key)
       expect(response_body[:data][:attributes]).to_not have_key :password
     end
+
+    it 'only sends required information based on the json contract' do
+      response_body = JSON.parse(response.body, symbolize_names: true)[:data]
+      
+      expect(response_body[:attributes]).to_not have_key :password
+    end
   end
 
-  describe 'sad path testing' do
+  describe 'sad path/edge case testing' do
     it 'returns a status 401 and error message when email or password is missing from the request' do
       user_params = {
         email: 'hailey@gmail.com'

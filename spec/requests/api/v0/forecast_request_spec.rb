@@ -104,7 +104,7 @@ describe 'Forecast API' do
     end
   end
 
-  describe 'sad path testing' do
+  describe 'sad path/edge case testing' do
     it 'returns an error object when location query parameters are not included' do
       get "/api/v0/forecast"
 
@@ -133,9 +133,7 @@ describe 'Forecast API' do
       expect(response_body[:errors][0][:title]).to eq('Invalid Request')
       expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
     end
-  end
-
-  describe 'edge case testing' do
+    
     it 'returns a fallback location when the location entered does not exist' do
       VCR.use_cassette('incorrect_location', serialize_with: :json) do
         get "/api/v0/forecast?location=akjsdf,mnp"
