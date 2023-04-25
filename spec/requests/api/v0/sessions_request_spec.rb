@@ -44,7 +44,7 @@ describe 'Sessions API' do
 
     it 'only sends required information based on the json contract' do
       response_body = JSON.parse(response.body, symbolize_names: true)[:data]
-      
+
       expect(response_body[:attributes]).to_not have_key :password
     end
   end

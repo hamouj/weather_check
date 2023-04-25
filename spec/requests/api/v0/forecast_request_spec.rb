@@ -133,7 +133,7 @@ describe 'Forecast API' do
       expect(response_body[:errors][0][:title]).to eq('Invalid Request')
       expect(response_body[:errors][0][:detail].first).to eq('A location must be provided')
     end
-    
+
     it 'returns an error object when the location does not exist' do
       VCR.use_cassette('incorrect_location', serialize_with: :json) do
         get "/api/v0/forecast?location=akjsdf,mnp"
@@ -141,7 +141,7 @@ describe 'Forecast API' do
         expect(response.status).to eq(400)
 
         response_body = JSON.parse(response.body, symbolize_names: true)
-  
+
         expect(response_body).to have_key(:errors)
         expect(response_body[:errors][0][:status]).to eq('400')
         expect(response_body[:errors][0][:title]).to eq('Invalid Request')

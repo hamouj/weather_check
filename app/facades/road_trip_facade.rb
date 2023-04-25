@@ -23,7 +23,7 @@ class RoadTripFacade
   end
 
   def complete_road_trip
-    if  find_lat_lng(@origin) == "Error" || find_lat_lng(@destination) == "Error"
+    if find_lat_lng(@origin) == "Error" || find_lat_lng(@destination) == "Error"
       return "Origin/Destination is not valid"
     else
       make_road_trip

@@ -215,7 +215,7 @@ describe 'Roadtrip API' do
         expect(response.status).to eq(400)
 
         response_body = JSON.parse(response.body, symbolize_names: true)
-  
+
         expect(response_body).to be_a Hash
         expect(response_body).to have_key(:errors)
         expect(response_body[:errors]).to be_an Array
@@ -239,7 +239,7 @@ describe 'Roadtrip API' do
         expect(response.status).to eq(400)
 
         response_body = JSON.parse(response.body, symbolize_names: true)
-  
+
         expect(response_body).to be_a Hash
         expect(response_body).to have_key(:errors)
         expect(response_body[:errors]).to be_an Array

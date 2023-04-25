@@ -14,7 +14,7 @@ class RoadTrip
     @id = nil
     @start_city = origin
     @end_city = destination
-    if route_data == nil
+    if route_data.nil?
       @travel_time = "impossible"
       @weather_at_eta = {}
     else

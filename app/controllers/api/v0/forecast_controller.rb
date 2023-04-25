@@ -12,7 +12,7 @@ class Api::V0::ForecastController < ApplicationController
   end
 
   private
-  
+
   def invalid_location_check(forecast)
     if forecast == "Invalid location"
       render json: ErrorSerializer.invalid_request(forecast), status: 400
